@@ -25,5 +25,5 @@ app.get("/users/dashboard",(req, res)=>{
 });
 
 app.listen(PORT, ()=>{
-    console.log("Server connected ")
+    console.log("Server is connected ")
 });
