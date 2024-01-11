@@ -1,8 +1,7 @@
 import express from 'express';
 import bcrypt from 'bcrypt'; // Import bcrypt properly
-const session = require ("express-session")
-const flash = require ("express-flash")
-
+import session from 'express-session';
+import flash from 'express-flash';
 const app = express();
 // import { pool } from '../dbConfig.js';
 const PORT = process.env.PORT || 4000;

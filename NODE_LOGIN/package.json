@@ -21,6 +21,7 @@
     "express-flash": "^0.0.2",
     "express-session": "^1.17.3",
     "jsonwebtoken": "^9.0.2",
+    "nodemodule": "^0.3.0",
     "nodemon": "^3.0.2",
     "pg": "^8.11.3"
   }
