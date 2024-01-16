@@ -1,5 +1,5 @@
-import express from 'express';
-import { pool } from './dbConfig';
+const express = require("express");
+const { pool } = require("./dbConfig");
 const bcrypt = require("bcrypt");
 const passport = require("passport");
 const flash = require("express-flash");
@@ -60,7 +60,7 @@ app.get("/users/logout", (req, res) => {
 });
 
 app.post("/users/register", async (req, res) => {
-  let { name, email, password, password2 } = req.body;
+  let { name, email, password, password1 } = req.body;
 
   let errors = [];
 
@@ -68,10 +68,10 @@ app.post("/users/register", async (req, res) => {
     name,
     email,
     password,
-    password2
+    password1
   });
 
-  if (!name || !email || !password || !password2) {
+  if (!name || !email || !password || !password1) {
     errors.push({ message: "Please enter all fields" });
   }
 
@@ -79,12 +79,12 @@ app.post("/users/register", async (req, res) => {
     errors.push({ message: "Password must be a least 6 characters long" });
   }
 
-  if (password !== password2) {
+  if (password !== password1) {
     errors.push({ message: "Passwords do not match" });
   }
 
   if (errors.length > 0) {
-    res.render("register", { errors, name, email, password, password2 });
+    res.render("register", { errors, name, email, password, password1 });
   } else {
     hashedPassword = await bcrypt.hash(password, 10);
     console.log(hashedPassword);
